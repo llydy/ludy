@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <title>إحصائيات الصفقات</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            background: linear-gradient(140deg, #1e1e2f 60%, #3794ff 100%);
+            font-family: 'Cairo', sans-serif;
+            color: #fff;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            direction: rtl;
+        }
+        .card {
+            background: rgba(20,20,40,0.92);
+            border-radius: 20px;
+            padding: 40px 20px;
+            margin: 60px auto;
+            width: 90%;
+            max-width: 400px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.25);
+        }
+        h1 {
+            font-size: 2.3em;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+        }
+        .stats {
+            display: flex;
+            justify-content: space-between;
+            margin: 30px 0;
+            font-size: 1.4em;
+        }
+        .stats div {
+            background: #2d2d42;
+            border-radius: 10px;
+            padding: 15px 10px;
+            flex: 1;
+            margin: 0 5px;
+        }
+        .win { color: #2dcc70; }
+        .lose { color: #e74c3c; }
+        .rate {
+            background: #3794ff;
+            border-radius: 10px;
+            padding: 10px;
+            margin: 10px 0 0 0;
+            font-size: 1.3em;
+        }
+        .footer {
+            margin-top: 40px;
+            color: #bbb;
+            font-size: 1em;
+        }
+        .controls {
+            margin-top: 30px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        .controls button {
+            background: #3794ff;
+            border: none;
+            color: #fff;
+            padding: 12px 25px;
+            border-radius: 12px;
+            font-size: 1.1em;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .controls button:hover {
+            background: #2d2d42;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1>📊 إحصائيات الصفقات</h1>
+        <div class="stats">
+            <div class="win">✅ ناجحة<br><span id="win">0</span></div>
+            <div class="lose">❌ خاسرة<br><span id="lose">0</span></div>
+        </div>
+        <div class="rate">🏆 نسبة النجاح: <span id="winRate">0.00</span>%</div>
+        <div class="controls">
+            <button onclick="addWin()">صفقة ناجحة</button>
+            <button onclick="addLose()">صفقة خاسرة</button>
+            <button onclick="resetStats()">إعادة تعيين</button>
+        </div>
+        <div class="footer">
+            مجموع الصفقات: <b id="total">0</b><br>
+            يمكنك تعديل الإحصائيات عبر الأزرار.<br>
+        </div>
+    </div>
+
+    <script>
+        // متغيرات للإحصائيات
+        let win = 0;
+        let lose = 0;
+
+        function updateStats() {
+            document.getElementById('win').textContent = win;
+            document.getElementById('lose').textContent = lose;
+            let total = win + lose;
+            document.getElementById('total').textContent = total;
+            let winRate = total > 0 ? (win / total * 100).toFixed(2) : '0.00';
+            document.getElementById('winRate').textContent = winRate;
+        }
+
+        function addWin() {
+            win++;
+            updateStats();
+        }
+
+        function addLose() {
+            lose++;
+            updateStats();
+        }
+
+        function resetStats() {
+            win = 0;
+            lose = 0;
+            updateStats();
+        }
+
+        // عند فتح الصفحة
+        updateStats();
+    </script>
+</body>
+</html>
