@@ -14,11 +14,43 @@
             padding: 0;
             direction: rtl;
         }
+        .header-img {
+            width: 100%;
+            max-height: 260px;
+            object-fit: cover;
+            border-bottom: 6px solid #3794ff;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+            margin-bottom: 0;
+        }
+        .tg-link {
+            margin: 28px auto 10px auto;
+            display: flex;
+            justify-content: center;
+        }
+        .tg-link img {
+            width: 90px;
+            height: 90px;
+            border-radius: 18px;
+            box-shadow: 0 2px 14px rgba(55,148,255,0.25);
+            transition: transform 0.18s;
+            border: 3px solid #3794ff;
+            background: #111;
+        }
+        .tg-link img:hover {
+            transform: scale(1.07) rotate(-4deg);
+            box-shadow: 0 4px 24px #3794ff70;
+        }
+        .tg-caption {
+            margin-top: 10px;
+            color: #3794ff;
+            font-size: 1.12em;
+            font-weight: 600;
+        }
         .card {
             background: rgba(20,20,40,0.92);
             border-radius: 20px;
             padding: 40px 20px;
-            margin: 60px auto;
+            margin: 40px auto 60px auto;
             width: 90%;
             max-width: 400px;
             box-shadow: 0 4px 20px rgba(0,0,0,0.25);
@@ -77,6 +109,17 @@
     </style>
 </head>
 <body>
+    <!-- الهيدر (الصورة في الأعلى) -->
+    <img src="header.jpg" alt="الهيدر" class="header-img">
+
+    <!-- رابط قناة التليجرام كصورة قابلة للضغط -->
+    <div class="tg-link">
+        <a href="https://t.me/orderfilllled" target="_blank" title="انضم للقناة">
+            <img src="whale.png" alt="قناة التليجرام">
+        </a>
+    </div>
+    <div class="tg-caption">اضغط على صورة القناة للانضمام 👈</div>
+
     <div class="card">
         <h1>📊 إحصائيات الصفقات</h1>
         <div class="stats">
@@ -96,7 +139,6 @@
     </div>
 
     <script>
-        // متغيرات للإحصائيات
         let win = 0;
         let lose = 0;
 
@@ -125,7 +167,6 @@
             updateStats();
         }
 
-        // عند فتح الصفحة
         updateStats();
     </script>
 </body>
